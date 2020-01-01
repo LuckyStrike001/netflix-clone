@@ -3,37 +3,70 @@ import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
 import TabDoor from "./tabs_nav/TabDoor";
 import TabDevices from "./tabs_nav/TabDevices";
 import TabPrices from "./tabs_nav/TabPrices";
+import TabContentOne from "./TabContentOne";
 import "../css/TabsNav.css";
 
 class TabComponent extends Component {
+  constructor() {
+    super();
+    this.state = { tabIndex: 0 };
+  }
   render() {
+    console.log("tabIndex", this.state.tabIndex);
     return (
       <div>
-        <Tabs className="tabs">
+        <Tabs
+          className="tabs"
+          selectedIndex={this.state.tabIndex}
+          onSelect={tabIndex => this.setState({ tabIndex })}
+        >
           <TabList className="tab-nav-container">
-            <Tab>
+            <Tab
+              className={`${
+                this.state.tabIndex === 0 ? "tab-selected active" : null
+              }`}
+            >
               <TabDoor />
-              <p>
+              <p className="lgScreen" style={{ marginBottom: "1.875rem" }}>
                 <strong>
                   No commitments
                   <br />
-                  cancel online anytime
+                  Cancel online at anytime
                 </strong>
               </p>
+              <span className="mdScreen" style={{ marginTop: "0.4rem" }}>
+                Cancel
+              </span>
             </Tab>
-            <Tab>
+            <Tab
+              className={`${
+                this.state.tabIndex === 1 ? "tab-selected active" : null
+              }`}
+            >
               <TabDevices />
               <p className="lgScreen" style={{ marginTop: "-5.3125rem" }}>
                 <strong>Watch anywhere</strong>
               </p>
+              <span className="mdScreen" style={{ marginTop: "-5.3125rem" }}>
+                Devices
+              </span>
             </Tab>
-            <Tab>
+            <Tab
+              className={`${
+                this.state.tabIndex === 2 ? "tab-selected active" : null
+              }`}
+            >
               <TabPrices />
-              <p>
+              <p className="lgScreen">
                 <strong>Pick your price</strong>
               </p>
+              <span className="mdScreen">Price</span>
             </Tab>
           </TabList>
+          {/* Tabs Content */}
+          <TabPanel>
+            <TabContentOne />
+          </TabPanel>
         </Tabs>
       </div>
     );
