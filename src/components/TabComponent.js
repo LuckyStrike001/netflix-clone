@@ -6,6 +6,7 @@ import TabPrices from "./tabs_nav/TabPrices";
 // Tabs content
 import TabContentOne from "./TabContentOne";
 import TabContentTwo from "./TabContentTwo";
+import TabContentThree from "./TabContentThree";
 
 import "../css/TabsNav.css";
 
@@ -72,6 +73,9 @@ class TabComponent extends Component {
           </TabPanel>
           <TabPanel>
             <TabContentTwo />
+          </TabPanel>
+          <TabPanel>
+            <TabContentThree />
           </TabPanel>
         </Tabs>
       </div>
