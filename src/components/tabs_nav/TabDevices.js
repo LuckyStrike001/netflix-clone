@@ -6,7 +6,7 @@ export default function TabDevices() {
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 45 145 48"
       focusable="true"
-      class="tab-icon-devices"
+      className="tab-icon-devices"
     >
       <title />
       <g id="devices">
