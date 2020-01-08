@@ -118,7 +118,7 @@ const HeaderContainer = styled.header`
       `}
     
       ${customMedia.lessThan("tablet")`
-        margin: 0 20%;
+        margin: 1.5rem 20%;
         font-size: 1.3rem;
       `}
     }
@@ -126,7 +126,7 @@ const HeaderContainer = styled.header`
 `;
 // Main Title
 const Title = styled.h1`
-  margin: 0 0 1.2rem;
+  margin: 0 0 1.5rem;
   font-size: 5rem;
   font-weight: 700;
   line-height: 1.1em;
