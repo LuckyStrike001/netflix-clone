@@ -2,6 +2,7 @@ import React from "react";
 import Img from "../images/tab-1-pic.png";
 import styled from "styled-components";
 import { Button } from "./Button";
+import { generateMedia } from "styled-media-query";
 
 function TabContentOne() {
   return (
@@ -27,6 +28,12 @@ function TabContentOne() {
 
 export default TabContentOne;
 
+//Media
+const customMedia = generateMedia({
+  smDesktop: "1440px",
+  tablet: "960px"
+});
+
 // Main Content Container
 const TabContentContainer = styled.div`
   background: var(--main-deep-dark);
@@ -35,6 +42,10 @@ const TabContentContainer = styled.div`
   }
   .title {
     margin-top: 2rem;
+    ${customMedia.lessThan("smDesktop")`
+    font-size: 1.5rem;
+    line-height: 1;
+  `}
   }
   img {
     width: 100%;
@@ -46,5 +57,11 @@ const TabContentContainer = styled.div`
     align-items: center;
     font-size: 2rem;
     padding: 2.5rem;
+    ${customMedia.lessThan("tablet")`
+      grid-template-columns: 100%;
+      text-align: center;
+      padding-left: 0;
+      padding-right: 0;
+    `}
   }
 `;

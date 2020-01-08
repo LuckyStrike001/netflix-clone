@@ -103,7 +103,7 @@ const HeaderContainer = styled.header`
     z-index: 2;
     ${customMedia.lessThan("smTablet")`
       grid-template-rows: repeat(3, 60px);
-      margin-top: 8rem;
+      margin-top: 0rem;
     `}
     // Lg Main
     .main-offer-btn {
