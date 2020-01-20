@@ -3,6 +3,7 @@ import styled from "styled-components";
 import { Link } from "react-router-dom";
 import { generateMedia } from "styled-media-query";
 import logo from "../svg/logo.svg";
+import LoginForm from "../components/login/LoginForm";
 
 class Login extends Component {
   render() {
@@ -12,6 +13,7 @@ class Login extends Component {
           <Link to="/">
             <Logo src={logo} alt="logo" className="logo" />
           </Link>
+          <LoginForm />
         </div>
       </div>
     );
