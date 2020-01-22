@@ -86,6 +86,6 @@ h4 {
 
 .header-top {
   position: relative;
-  height: 10rem;
+  /* height: 10rem; */
   z-index: 1;
 }
