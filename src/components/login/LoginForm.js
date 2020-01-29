@@ -6,7 +6,72 @@ import FBlogo from "../../images/fb-logo.png";
 
 import styled from "styled-components";
 
+const regExp = RegExp(
+  /^([a-zA-Z0-9_\-\.]+)@([a-zA-Z0-9_\-\.]+)\.([a-zA-Z]{2,5})$/
+);
+
+const initState = {
+  checked: true,
+  email: "",
+  password: "",
+  emailError: "",
+  passwordError: ""
+};
+
 class LoginForm extends Component {
+  state = initState;
+
+  handleEmailChange = e => {
+    this.setState({
+      email: e.target.value
+    });
+  };
+
+  handlePasswordChange = e => {
+    this.setState({
+      password: e.target.value
+    });
+  };
+
+  //validate
+  validate = () => {
+    let inputError = false;
+    const errors = {
+      emailError: "",
+      passwordError: ""
+    };
+
+    if (!this.state.email) {
+      inputError = true;
+      errors.emailError = "Please enter a valid email or phone number.";
+    } else if (!this.state.email.match(regExp)) {
+      inputError = true;
+      errors.emailError = (
+        <span style={{ color: "red" }}>Your Email address must be valid</span>
+      );
+    }
+
+    if (this.state.password.length < 4) {
+      inputError = true;
+      errors.passwordError =
+        "Your password must contain between 4 and 60 characters.";
+    }
+
+    this.setState({
+      ...errors
+    });
+
+    return inputError;
+  };
+
+  onSubmit = e => {
+    e.preventDefault();
+    const err = this.validate();
+    if (!err) {
+      this.setState(initState);
+    }
+  };
+
   render() {
     return (
       <FormContainer>
@@ -14,17 +79,31 @@ class LoginForm extends Component {
           <form>
             <h1>Sign In</h1>
             <div className="input-container">
-              <input className="input-empty" type="email" required />
+              <input
+                className="input-empty"
+                type="email"
+                onChange={this.handleEmailChange}
+                required
+              />
               <label>Email or Phone number</label>
-              <span style={{ color: "#db7302" }}></span>
+              <span style={{ color: "#db7302" }}>{this.state.emailError}</span>
             </div>
             <div className="input-container">
-              <input type="password" required className="input-empty" />
+              <input
+                type="password"
+                required
+                onChange={this.handlePasswordChange}
+                className="input-empty"
+              />
               <label>Password</label>
-              <span style={{ color: "#db7302" }}></span>
+              <span style={{ color: "#db7302" }}>
+                {this.state.passwordError}
+              </span>
             </div>
             <div className="input-container">
-              <Btn type="submit">Sign In</Btn>
+              <Btn type="submit" onClick={e => this.onSubmit(e)}>
+                Sign In
+              </Btn>
             </div>
 
             <label className="checkbox-container">
