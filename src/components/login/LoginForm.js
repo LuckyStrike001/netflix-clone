@@ -80,7 +80,11 @@ class LoginForm extends Component {
             <h1>Sign In</h1>
             <div className="input-container">
               <input
-                className="input-empty"
+                className={
+                  this.state.emailError
+                    ? "input-empty input-error"
+                    : "input-empty"
+                }
                 type="email"
                 onChange={this.handleEmailChange}
                 required
@@ -93,7 +97,11 @@ class LoginForm extends Component {
                 type="password"
                 required
                 onChange={this.handlePasswordChange}
-                className="input-empty"
+                className={
+                  this.state.passwordError
+                    ? "input-empty input-error"
+                    : "input-empty"
+                }
               />
               <label>Password</label>
               <span style={{ color: "#db7302" }}>
