@@ -33,6 +33,12 @@ class LoginForm extends Component {
     });
   };
 
+  handleCheckbox = e => {
+    this.setState({
+      checked: e.target.checked
+    });
+  };
+
   //validate
   validate = () => {
     let inputError = false;
@@ -116,7 +122,11 @@ class LoginForm extends Component {
 
             <label className="checkbox-container">
               Remember me
-              <input type="checkbox" />
+              <input
+                type="checkbox"
+                defaultChecked={this.state.checked}
+                onClick={this.handleCheckbox}
+              />
               <span className="checkmark"></span>
             </label>
             <Link to="/" className="need-help">
