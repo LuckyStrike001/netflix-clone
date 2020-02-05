@@ -1,41 +1,57 @@
-import React from "react";
+import React, { Component } from "react";
 import styled from "styled-components";
 import logo from "../svg/logo.svg";
 import { Link, NavLink } from "react-router-dom";
 import { Button } from "../components/Button";
+import CheckmarkLogo from "../images/Checkmark.png";
+import FooterChoosePlan from "../components/choosePlan/FooterChoosePlan";
 
-const ChoosePlan = () => {
-  return (
-    <div>
-      <MainContainer>
-        <div className="header-top">
-          <Link to="/">
-            <Logo src={logo} alt="logo" />
-          </Link>
-          <NavLink to="/login" className="btn signIn-btn">
-            Sign In
-          </NavLink>
-        </div>
-        {/* header content */}
-        <div className="header-content">
-          <img className="checkmark-logo" alt="checkmark img" />
-          <p>
-            Step <strong>1</strong> of <strong>3</strong>
-          </p>
-          <h2>Choose your plan.</h2>
-          <div className="checked-list">
-            <div className="bullet">No commitments, cancel anytime.</div>
-            <div className="bullet">
-              Everything on Netflix for one low price.
-            </div>
-            <div className="bullet">Unlimited viewing on all your devices.</div>
+class ChoosePlan extends Component {
+  componentDidMount() {
+    window.scrollTo(0, 0);
+  }
+  render() {
+    return (
+      <div>
+        <MainContainer>
+          <div className="header-top">
+            <Link to="/">
+              <Logo src={logo} alt="logo" />
+            </Link>
+            <NavLink to="/login" className="btn signIn-btn">
+              Sign In
+            </NavLink>
           </div>
-          <Button>See the plans</Button>
-        </div>
-      </MainContainer>
-    </div>
-  );
-};
+          {/* header content */}
+          <div className="header-content">
+            <img
+              className="checkmark-logo"
+              src={CheckmarkLogo}
+              alt="checkmark img"
+            />
+            <p>
+              Step <strong>1</strong> of <strong>3</strong>
+            </p>
+            <h2>Choose your plan.</h2>
+            <div className="checked-list">
+              <div className="bullet">No commitments, cancel anytime.</div>
+              <div className="bullet">
+                Everything on Netflix for one low price.
+              </div>
+              <div className="bullet">
+                Unlimited viewing on all your devices.
+              </div>
+            </div>
+            <Button>See the plans</Button>
+          </div>
+          <FooterChoosePlan />
+        </MainContainer>
+      </div>
+    );
+  }
+}
+
+export default ChoosePlan;
 
 // Main container
 const MainContainer = styled.div`
@@ -128,5 +144,3 @@ const Logo = styled.img`
   transform: translate(-50%, -50%);
   margin-left: 0;
 `;
-
-export default ChoosePlan;
