@@ -24,7 +24,7 @@ class Header extends Component {
           <Title>See what's next</Title>
           <SubTitle>watch any where. cancel anytime</SubTitle>
           <Link to="/choose-plan">
-            <Button className="main-offer-btn" primary>
+            <Button to="/choose-plan" className="main-offer-btn" primary>
               try it now
               <Icon className="Icon" size={37} icon={ic_keyboard_arrow_right} />
             </Button>
